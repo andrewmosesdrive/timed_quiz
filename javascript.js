@@ -12,19 +12,47 @@ let currentSlide = 0;
 const questionsArray = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 
-// Function that only executes "startQuiz" quiz once navbar button is pressed
+// Function that only executes "takeQuiz" quiz once navbar button is pressed
 function takeQuiz() {
 
 };
 
 // Function that begins the quiz
 function createQuiz() {
+    // array for storing HTML output
+    const output = [];
 
+    // for each question
+    questionsArray.forEach(
+        (currentQuestion, questionNumber) => {
+
+            // array for storing possible answers
+            const answers = [];
+
+            // for loop: available answers
+            for (letter in currentQuestion.answers) {
+
+                // add an HTML radio button
+                answers.push(
+                    // need code here, utilize jQuery
+                );
+
+                // add question & answers to output
+                output.push(
+                    //  need code here, utilize jQuery
+                );
+
+            };
+        }
+    );
+
+    // combine output list into one string
+    quizContainer.innerHTML = output.join("");
 };
 
 // Function that shows the answers
 function showResults() {
-
+  
 };
 
 // Function to convert questions into slides for pagination
