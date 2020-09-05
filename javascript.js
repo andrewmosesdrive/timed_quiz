@@ -55,6 +55,7 @@ const questionArray = [
 
 // constants
 // note: must use getElementById for corresponding radio buttons in HTML; querySelector will return null
+// quiz related
 const quiz = document.getElementById("quiz")
 const a_text = document.getElementById("a_text");
 const b_text = document.getElementById("b_text");
@@ -64,16 +65,38 @@ const answerEls = document.querySelectorAll(".answer")
 const questionEl = document.getElementById("question");
 const submitBtn = document.getElementById("submit");
 
+// timer related
+const timer = document.getElementById("timer");
+const btnStart = document.getElementById("btn-start");
+const btnStop = document.getElementById("btn-stop");
+
+// set timer length as count; declare intervalID
+let count = 60;
+let intervalID;
+
 // set "currentQuiz" and "score both to 0"
 let currentQuestion = 0;
 let score = 0;
 
-// call primary function "loadQuiz"
-loadQuiz();
+// to set the quiz as hidden
+function hideQuiz() {
+    document.getElementById("quiz").style.visibility = "hidden";
+}
 
+// hidden is default
+hideQuiz();
+
+// to show the quiz once the start button is clicked
+function showQuiz() {
+    document.getElementById("quiz").style.visibility = "visible";
+}
+
+// to create the quiz 
 function loadQuiz() {
 
-    // call function "deselctAnswers" to deselect answers previously clicked
+    showQuiz();
+
+    // call function "deselectAnswers" to deselect answers previously clicked
     deselectAnswers();
 
     // set "currentQuizData" to the value of the current quiz within the "quizData" array 
@@ -81,7 +104,7 @@ function loadQuiz() {
 
     // when the quiz loads, set the inner text of the question element to the "question" within the current object
     questionEl.innerText = currentQuestionData.question;
-    
+
     // set the inner text of a-d to the corresponding a-d options of the current object
     a_text.innerText = currentQuestionData.a;
     b_text.innerText = currentQuestionData.b;
@@ -103,7 +126,7 @@ function getSelected() {
         }
     })
 
-    // return nothing (empty string)
+    // return answer (undefined)
     return answer;
 };
 
@@ -111,7 +134,6 @@ function getSelected() {
 function deselectAnswers() {
 
     answerEls.forEach((answerEl) => {
-
         answerEl.checked = false;
     });
 };
@@ -119,42 +141,94 @@ function deselectAnswers() {
 
 
 // event listener on click
-submitBtn.addEventListener("click", () => {
 
-    // set answer to "getSelected"
-    const answer = getSelected();
+// start timer, stop if it reaches 0
+btnStart.addEventListener("click", function () {
 
-    // if the chosen answer is correct on submit, increase the score
-    if (answer) {
+    // call primary function "loadQuiz"
+    loadQuiz();
 
-        if (answer === questionArray[currentQuestion].correct) {
-            score++
-        };
+    intervalID = setInterval(() => {
+        count--;
+        timer.textContent = count;
 
-        // then go to next question within the array
-        currentQuestion++;
+        // if timer drops to 0
+        if (count <= 0) {
+            clearInterval(intervalID);
 
-        // if the current quiz question object is less than the length of the array, load quiz
-        if (currentQuestion < questionArray.length) {
-
-            loadQuiz();
-
-          // otherwise,  
-        } else {
-
-            // show how many were correctly answered and create "Reload" button
+            // show score
             quiz.innerHTML =
-                
-            `<h2>You answered correctly at ${score}/${questionArray.length} questions. </h2>
+
+                `<h2>Time's up! You answered ${score}/${questionArray.length} questions correctly. </h2>
 
                 <button onclick="location.reload()">Reload</button>
                
             `;
         };
+    }, 1000);
 
+
+});
+
+
+submitBtn.addEventListener("click", () => {
+
+    // set answer to "getSelected"
+    const answer = getSelected();
+
+    // if 
+    if (answer) {
+
+            // the chosen answer is correct on submit, increase the score
+        if (answer === questionArray[currentQuestion].correct) {
+            score++;
+        }
+
+        // if it is not correct
+        else if (answer !== questionArray[currentQuestion].correct) {
+
+            // reduce the time remaining by 10 seconds
+            count = count - 10;
+
+            // then update the timer on the page
+            timer.textContent = count;
+            
+        };
+       
+        // then go to next question within the array
+        currentQuestion++;
+
+        // if the current question is within array length
+        if (currentQuestion < questionArray.length) {
+            
+            // keep loading quiz
+            loadQuiz();
+        }
+
+        // otherwise
+        else {
+
+            // give a message and stop the timer
+            quiz.innerHTML =
+
+                `<h2>Done with ${count} seconds to spare! You answered ${score}/${questionArray.length} questions correctly. </h2>
+
+                <button onclick="location.reload()">Reload</button> `;
+
+                clearInterval(intervalID);
+        };
+
+        
+        
     };
+
+    
 });
 
 // -----------------------------------------------
 
-// Countdown clock/timer structure
+
+
+
+
+
