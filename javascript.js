@@ -64,14 +64,13 @@ const d_text = document.getElementById("d_text");
 const answerEls = document.querySelectorAll(".answer")
 const questionEl = document.getElementById("question");
 const submitBtn = document.getElementById("submit");
-
 // timer related
 const timer = document.getElementById("timer");
 const btnStart = document.getElementById("btn-start");
 const btnStop = document.getElementById("btn-stop");
-
 // form related
 const form = document.getElementById("Scoreboard")
+
 
 // set timer length as count; declare intervalID
 let count = 60;
@@ -88,12 +87,12 @@ hideForm();
 // to set the quiz as hidden
 function hideQuiz() {
     document.getElementById("quiz").style.visibility = "hidden";
-}
+};
 
 // to show the quiz once the start button is clicked
 function showQuiz() {
     document.getElementById("quiz").style.visibility = "visible";
-}
+};
 
 // hide the form until the user completes the quiz
 function hideForm() {
@@ -179,6 +178,7 @@ btnStart.addEventListener("click", function () {
             quiz.innerHTML =
                 `<h2>Time's up! You answered ${score}/${questionArray.length} questions correctly. </h2>
                 <button onclick="location.reload()">Reload</button>`;
+
         };
     }, 1000);
 });
@@ -221,7 +221,7 @@ submitBtn.addEventListener("click", () => {
         // otherwise
         else {
 
-            // give a message and stop the timer
+            // give a message and stop the timer and show the form for user input to be saved
             quiz.innerHTML =
 
                 `<h2>Done with ${count} seconds to spare! You answered ${score}/${questionArray.length} questions correctly. </h2>
@@ -229,21 +229,16 @@ submitBtn.addEventListener("click", () => {
                 <button onclick="location.reload()">Try Again</button> `;
 
             clearInterval(intervalID);
+
+            showForm();
+        
         };
 
     };
-
-
-    if (score === 5) {
-        showForm();
-    }
+    
 });
 
 
 
 // -----------------------------------------------
-
-// save scores and initials
-
-// Scoreboard related
 
