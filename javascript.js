@@ -70,6 +70,9 @@ const timer = document.getElementById("timer");
 const btnStart = document.getElementById("btn-start");
 const btnStop = document.getElementById("btn-stop");
 
+// form related
+const form = document.getElementById("Scoreboard")
+
 // set timer length as count; declare intervalID
 let count = 60;
 let intervalID;
@@ -78,18 +81,29 @@ let intervalID;
 let currentQuestion = 0;
 let score = 0;
 
+// hidden is default for quiz and form
+hideQuiz();
+hideForm();
+
 // to set the quiz as hidden
 function hideQuiz() {
     document.getElementById("quiz").style.visibility = "hidden";
 }
 
-// hidden is default
-hideQuiz();
-
 // to show the quiz once the start button is clicked
 function showQuiz() {
     document.getElementById("quiz").style.visibility = "visible";
 }
+
+// hide the form until the user completes the quiz
+function hideForm() {
+    document.getElementById("Scoreboard").style.visibility = "hidden";
+};
+
+// show form once quiz is completed with all correct answers
+function showForm() {
+    document.getElementById("Scoreboard").style.visibility = "visible";
+};
 
 // to create the quiz 
 function loadQuiz() {
@@ -145,29 +159,28 @@ function deselectAnswers() {
 // start timer, stop if it reaches 0
 btnStart.addEventListener("click", function () {
 
+    document.getElementById("btn-start").style.display = "none";
+
+
     // call primary function "loadQuiz"
     loadQuiz();
 
     intervalID = setInterval(() => {
         count--;
-        timer.textContent = count;
+        timer.textContent = count + " Seconds";
 
         // if timer drops to 0
-        if (count <= 0) {
+        if (count < 1) {
+
+            // stop timer
             clearInterval(intervalID);
 
-            // show score
+            // show score and create reload button
             quiz.innerHTML =
-
                 `<h2>Time's up! You answered ${score}/${questionArray.length} questions correctly. </h2>
-
-                <button onclick="location.reload()">Reload</button>
-               
-            `;
+                <button onclick="location.reload()">Reload</button>`;
         };
     }, 1000);
-
-
 });
 
 
@@ -179,7 +192,7 @@ submitBtn.addEventListener("click", () => {
     // if 
     if (answer) {
 
-            // the chosen answer is correct on submit, increase the score
+        // the chosen answer is correct on submit, increase the score
         if (answer === questionArray[currentQuestion].correct) {
             score++;
         }
@@ -191,16 +204,16 @@ submitBtn.addEventListener("click", () => {
             count = count - 10;
 
             // then update the timer on the page
-            timer.textContent = count;
-            
+            timer.textContent = count + " Seconds";
+
         };
-       
+
         // then go to next question within the array
         currentQuestion++;
 
         // if the current question is within array length
         if (currentQuestion < questionArray.length) {
-            
+
             // keep loading quiz
             loadQuiz();
         }
@@ -213,22 +226,24 @@ submitBtn.addEventListener("click", () => {
 
                 `<h2>Done with ${count} seconds to spare! You answered ${score}/${questionArray.length} questions correctly. </h2>
 
-                <button onclick="location.reload()">Reload</button> `;
+                <button onclick="location.reload()">Try Again</button> `;
 
-                clearInterval(intervalID);
+            clearInterval(intervalID);
         };
 
-        
-        
     };
 
-    
+
+    if (score === 5) {
+        showForm();
+    }
 });
+
+
 
 // -----------------------------------------------
 
+// save scores and initials
 
-
-
-
+// Scoreboard related
 
