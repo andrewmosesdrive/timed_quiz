@@ -1,5 +1,5 @@
 // Quiz structure
-window.onload = (event) => {
+window.onload = () => {
   if (!window.localStorage.getItem("high-scores")) {
     window.localStorage.setItem("high-scores", "[]");
   } else {
@@ -208,19 +208,22 @@ submitBtn.addEventListener("click", () => {
 
       clearInterval(intervalID);
 
+      // show form for initials input
       showForm();
-
     }
   }
 });
 
-// -----------------------------------------------
+// Submit initials and render scores for score page
 let submitScoreButton = document.getElementById("submitBtn_initials");
-submitScoreButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  let initials = document.getElementById("initials");
-  console.log(initials.value);
+submitScoreButton.addEventListener("click", (event) => {
+  // Prevent bubbling
+  event.preventDefault();
 
+  let initials = document.getElementById("initials");
+  //   console.log(initials.value);
+
+  //   if initials is not an empty string, parse out high scores
   if (initials !== "") {
     let initialsValue = initials.value;
     let highScores = JSON.parse(window.localStorage.getItem("high-scores"));
@@ -228,11 +231,13 @@ submitScoreButton.addEventListener("click", (e) => {
       score: count,
       initials: initialsValue,
     };
+
+    // push to highScores
     highScores.push(toPush);
-    console.log(highScores);
+    // console.log(highScores);
 
     window.localStorage.setItem("high-scores", JSON.stringify(highScores));
-  } else {
-    console.log("Enter yo initials");
-  }
+  }; 
+  // then reload page
+  location.reload();
 });
