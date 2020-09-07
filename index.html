@@ -42,65 +42,102 @@
           </li>
 
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="/highscores.html"
-              role="button"
-              >Scores</a
-            >
+            <a class="nav-link" href="/highscores.html" role="button">Scores</a>
           </li>
         </ul>
       </div>
     </nav>
 
     <!-- Timer -->
-    <div class="timer-container">
-      <h2>Time Remaining:</h2>
-
-      <h2 id="timer">60 Seconds</h2>
-
-      <button id="btn-start">Take the Quiz</button>
+    <div class="timer-container" class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <h2>Time Remaining:</h2>
+          <h2 id="timer">60 Seconds</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <button id="btn-start" class="btn btn-primary">Take the Quiz</button>
+        </div>
+      </div>
     </div>
 
     <!-- Holds main quiz content on page -->
     <div class="quiz-container" id="quiz">
-      <div class="quiz-header"></div>
-      <h2 id="question">Question-text</h2>
       <!-- Questions with radio buttons-->
-      <ul>
-        <li>
-          <input type="radio" name="answer" id="a" class="answer" />
-          <label id="a_text" for="a">Question</label>
-        </li>
-        <li>
-          <input type="radio" name="answer" id="b" class="answer" />
-          <label id="b_text" for="b">Question</label>
-        </li>
-        <li>
-          <input type="radio" name="answer" id="c" class="answer" />
-          <label id="c_text" for="c">Question</label>
-        </li>
-        <li>
-          <input type="radio" name="answer" id="d" class="answer" />
-          <label id="d_text" for="d">Question</label>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <h2 id="question">Question-text</h2>
+          <br />
+          <ul>
+            <li>
+              <input
+                type="radio"
+                name="answer"
+                id="a"
+                class="answer form-check-input"
+              />
+              <label id="a_text" for="a">Question</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="answer"
+                id="b"
+                class="answer form-check-input"
+              />
+              <label id="b_text" for="b">Question</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="answer"
+                id="c"
+                class="answer form-check-input"
+              />
+              <label id="c_text" for="c">Question</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="answer"
+                id="d"
+                class="answer form-check-input"
+              />
+              <label id="d_text" for="d">Question</label>
+            </li>
+          </ul>
+        </div>
+      </div>
       <!-- Submit button -->
-      <button id="submit">Submit</button>
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <button id="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
     </div>
 
     <!-- User input for initials and score -->
-    <div class="clearfix">
-      <div class="card" id="Scoreboard">
-        <h2>Scoreboard</h2>
-        <form method="user-inputs">
-          <div class="input-group">
-            <label for="initials">Your Initials</label>
-            <input type="text" name="initials" id="initials" placeholder="" />
-          </div>
-          <br />
-          <button id="submitBtn_initials">Put it on the books</button>
-        </form>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="card" id="Scoreboard">
+          <form method="user-inputs">
+            <div class="input-group">
+              <label for="initials" class="your-initials">Your Initials</label>
+            </div>
+              <input
+                type="text"
+                name="initials"
+                id="initials"
+                placeholder="AM"
+              />
+            <br>
+            <button id="submitBtn_initials" class="btn btn-primary">
+              Put it on the books
+            </button>
+          </form>
+        </div>
       </div>
     </div>
 

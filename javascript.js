@@ -9,48 +9,48 @@ window.onload = () => {
 // Array of questions with question, answer options, and correct answer in each object
 const questionArray = [
   {
-    question: "blah",
-    a: "okay",
-    b: "nah",
-    c: "duh",
-    d: "yup",
-    correct: "c",
-  },
-
-  {
-    question: "yeet",
-    a: "okay",
-    b: "nah",
-    c: "duh",
-    d: "yup",
-    correct: "d",
-  },
-
-  {
-    question: "lit",
-    a: "okay",
-    b: "nah",
-    c: "duh",
-    d: "yup",
-    correct: "a",
-  },
-
-  {
-    question: "whoa",
-    a: "okay",
-    b: "nah",
-    c: "duh",
-    d: "yup",
+    question: "Inside which HTML element do we put the JavaScript?",
+    a: "<js>",
+    b: "<script>",
+    c: "<javascript>",
+    d: "<scripting>",
     correct: "b",
   },
 
   {
-    question: "neato",
-    a: "okay",
-    b: "nah",
-    c: "duh",
-    d: "yup",
+    question: "Where is the correct place to insert a JavaScript?",
+    a: "<head>",
+    b: "<head> and <body>",
+    c: "<body>",
+    d: "none of the above",
+    correct: "b",
+  },
+
+  {
+    question: "How do you write 'Hello World' in an alert box?",
+    a: "alertBox('Hello World')",
+    b: "msg('Hello World')",
+    c: "alert('Hello World')",
+    d: "msgBox('Hello World')",
     correct: "c",
+  },
+
+  {
+    question: "How do you create a function in JavaScript?",
+    a: "function myFunction()",
+    b: "function = myFunction()",
+    c: "function:myFunction()",
+    d: "[] =>",
+    correct: "a",
+  },
+
+  {
+    question: "How do you call a function named 'myFunction()",
+    a: "myFunction()",
+    b: "call function = myFunction()",
+    c: "call myFunction()",
+    d: "oh function, myFunction()",
+    correct: "a",
   },
 ];
 
