@@ -6,7 +6,7 @@
 /* timer */
 .container {
     width: 100%;
-}
+};
 
 .row {
     display: flex;
@@ -30,28 +30,22 @@
     width: 100%;
 };
 
-
-
 #question {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
     padding-bottom: 30px;
-}
+};
 
 .your-initials {
     display: flex;
-}
+};
 
 .btn {
     margin-top: 10px;
-}
+};
 
 .scoreboard {
     display: flex;
     justify-content: center;
-}
-
-.main-list {
-    
-}
+};
