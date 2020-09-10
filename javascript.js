@@ -6,7 +6,7 @@ window.onload = () => {
   }
 };
 
-// Array of questions with question, answer options, and correct answer in each object
+// Array of questions with question, answer options, and correct answer within each object
 const questionArray = [
   {
     question: "Inside which HTML element do we put the JavaScript?",
@@ -55,7 +55,7 @@ const questionArray = [
 ];
 
 // constants
-// note: must use getElementById for corresponding radio buttons in HTML; querySelector will return null
+
 // quiz related
 const quiz = document.getElementById("quiz");
 const a_text = document.getElementById("a_text");
@@ -65,10 +65,12 @@ const d_text = document.getElementById("d_text");
 const answerEls = document.querySelectorAll(".answer");
 const questionEl = document.getElementById("question");
 const submitBtn = document.getElementById("submit");
+
 // timer related
 const timer = document.getElementById("timer");
 const btnStart = document.getElementById("btn-start");
 const btnStop = document.getElementById("btn-stop");
+
 // form related
 const form = document.getElementById("Scoreboard");
 const initials = document.querySelector("#initials");
@@ -78,7 +80,7 @@ const submitResults = document.querySelector("#submitBtn_initials");
 let count = 60;
 let intervalID;
 
-// set "currentQuiz" and "score both to 0"
+// set "currentQuiz" and "score" both to 0
 let currentQuestion = 0;
 let score = 0;
 
@@ -89,24 +91,24 @@ hideForm();
 // to set the quiz as hidden
 function hideQuiz() {
   document.getElementById("quiz").style.visibility = "hidden";
-}
+};
 
 // to show the quiz once the start button is clicked
 function showQuiz() {
   document.getElementById("quiz").style.visibility = "visible";
-}
+};
 
 // hide the form until the user completes the quiz
 function hideForm() {
   document.getElementById("Scoreboard").style.visibility = "hidden";
-}
+};
 
 // show form once quiz is completed with all correct answers
 function showForm() {
   document.getElementById("Scoreboard").style.visibility = "visible";
-}
+};
 
-// to create the quiz
+// to load the quiz
 function loadQuiz() {
   showQuiz();
 
@@ -124,7 +126,7 @@ function loadQuiz() {
   b_text.innerText = currentQuestionData.b;
   c_text.innerText = currentQuestionData.c;
   d_text.innerText = currentQuestionData.d;
-}
+};
 
 // when "getSelected" is called,
 function getSelected() {
@@ -138,19 +140,19 @@ function getSelected() {
     }
   });
 
-  // return answer (undefined)
+  // return answer
   return answer;
-}
+};
 
 // for each answer element, is checked answer false
 function deselectAnswers() {
   answerEls.forEach((answerEl) => {
     answerEl.checked = false;
   });
-}
+};
 
 // start timer, stop if it reaches 0
-btnStart.addEventListener("click", function () {
+btnStart.addEventListener("click", () => {
   document.getElementById("btn-start").style.display = "none";
 
   // call primary function "loadQuiz"
@@ -165,7 +167,7 @@ btnStart.addEventListener("click", function () {
       // stop timer
       clearInterval(intervalID);
 
-      // show score and create reload button
+      // template literal to show score and create reload button
       quiz.innerHTML = `<h2>Time's up! You answered ${score}/${questionArray.length} questions correctly. </h2>
                 <button onclick="location.reload()">Reload</button>`;
     }
@@ -203,9 +205,10 @@ submitBtn.addEventListener("click", () => {
 
     // otherwise
     else {
-      // give a message and stop the timer and show the form for user input to be saved
+      // give a message, stop the timer, and show the form for user input to be saved with another template literal
       quiz.innerHTML = `<h2>Done with ${count} seconds to spare! You answered ${score}/${questionArray.length} questions correctly. </h2>`;
 
+      // stop timer
       clearInterval(intervalID);
 
       // show form for initials input

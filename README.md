@@ -3,19 +3,22 @@
 
 For this assignment, I was tasked with creating a timed quiz local storage capabilities, utilizing JavaScript, HTML, and CSS with the following acceptance criteria:
 
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+-GIVEN I am taking a code quiz
+-WHEN I click the start button
+-THEN a timer starts and I am presented with a question
+-WHEN I answer a question
+-THEN I am presented with another question
+-WHEN I answer a question incorrectly
+-THEN time is subtracted from the clock
+-WHEN all questions are answered or the timer reaches 0
+-THEN the game is over
+-WHEN the game is over
+-THEN I can save my initials and score
 
 This assignment was completed from the ground up with no structure or pre-existing code available. I approached this assignment by building out what i needed, piece by piece, as opposed to trying to tackle large portions at a time. I believe this was immensely helpful, and not only kept my workflow fluid, but helped my build out my pseudocode and debug as I went.
+
+### Deployment link
+https://andrewmosesdrive.github.io/timed_quiz/
 
 ### Credits
 - Joey Jepson (@alligatormonday) assissted me with minor fixes, and we accomplished building out our local storage functions together
